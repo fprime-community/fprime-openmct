@@ -100,7 +100,7 @@ while True:
 
     #Write initial states to initial_states.json and save it in the user-specified OpenMCT directory
     if telem_pipeline.json_writeable and write_json:
-        telem_pipeline.write_telem_json(args.openmct_dir + "intial_states.json")
+        telem_pipeline.write_telem_json(args.openmct_dir + "initial_states.json")
         write_json = False
 
     #Poll the F-Prime GDS Pipeline for telemetry, and update the latest telemetry JSON
