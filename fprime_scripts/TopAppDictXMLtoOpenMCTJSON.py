@@ -4,29 +4,19 @@ import xml.etree.ElementTree as ET
 from fprime_gds.common.pipeline.dictionaries import Dictionaries
 import json
 
-class DictionaryIngester:
+class EnumIngester:
     """
-    The Dictionary Ingester class intends to take the F-Prime Topology App Dictionary XML and convert it to Python Dictionaries for commands, events, channels, and parameters
+    The Enum Ingester class intends to take the F-Prime Topology App Dictionary XML and generate Enum Definitions in the OpenMCT Format
     It includes the following data members:
 
     1. root -> Contains root(top level) of Topology App XML Tree
     2. types -> One level lower from the root. Contains type information stored in the Topology App XML
     3. enums -> Defines enumeration types from the Topology App XML
-    4. serializables -> Defines serializable types from the Topology App XML
-    5. commands -> Defines commands from the Topology App XML
-    6. events -> Defines events from the Topology App XML
-    7. channels -> Defines channels from the Topology App XML
-    8. parameters -> Defines parameters from the Topology App XML
     """
     def __init__(self, root):
         self._root = root
         self._types = self.traverseLevel(self._root)
         self._enums = self.formulateEnum(self.traverseLevel(self._types[0]))
-        self._serializables = self.traverseLevel(self._types[1])
-        self._commands = self.traverseLevel(self._types[3])
-        self._events = self.traverseLevel(self._types[4])
-        self._channels = self.traverseLevel(self._types[5])
-        self._parameters = self.traverseLevel(self._types[6])
 
     def traverseLevel(self, level):
         sub_list = []
@@ -64,7 +54,7 @@ class TopologyAppDictionaryJSONifier():
     5. dict_enum -> F-Prime Dictionary for F-Prime Enum Definitions
     6. dict_test -> F-Prime Dictionary for F-Prime Commands, Events, Telem Channels, and Parameters
     7. channel_list -> List of F-Prime Telemetry Channel Definitions
-    8. heli_dict -> OpenMCT-formatted Dictionary of F-Prime Telemetry Channel Information
+    8. openmct_telem_dict -> OpenMCT-formatted Dictionary of F-Prime Telemetry Channel Information
 
     """
     def __init__(self, xml_path='MPPTDeploymentTopologyAppDictionary.xml'):
@@ -76,7 +66,7 @@ class TopologyAppDictionaryJSONifier():
         #Formulate dict from XML Tree to get enum decomposition
         tree = ET.parse(xml_path)
         root = tree.getroot()
-        self.__dict_enum = DictionaryIngester(root)
+        self.__dict_enum = EnumIngester(root)
 
         self.__dict_test = Dictionaries()
         self.__dict_test.load_dictionaries(xml_path, packet_spec=None)
@@ -85,10 +75,10 @@ class TopologyAppDictionaryJSONifier():
         #Populate the measurement list  
         self.loadEntries()
 
-        self.__heli_dict = {}
-        self.__heli_dict['name'] = xml_path.replace('.xml', '')
-        self.__heli_dict['key'] = xml_path.replace('.xml', '')
-        self.__heli_dict['measurements'] = self.__measurement_list
+        self.__openmct_telem_dict = {}
+        self.__openmct_telem_dict['name'] = xml_path.replace('.xml', '')
+        self.__openmct_telem_dict['key'] = xml_path.replace('.xml', '')
+        self.__openmct_telem_dict['measurements'] = self.__measurement_list
 
     # Load Telemetry Channel List and format it to be in the OpenMCT Dictionary Format
     def loadEntries(self):
@@ -132,9 +122,9 @@ class TopologyAppDictionaryJSONifier():
 
     #Write OpenMCT dictionary to a JSON file
     def writeJSON(self, fname):
-        heli_json = json.dumps(self.__heli_dict, indent=4)
+        openmct_json = json.dumps(self.__openmct_telem_dict, indent=4)
         with open(fname + ".json", "w") as outfile:
-            outfile.write(heli_json)                 
+            outfile.write(openmct_json)                 
 
 #Set up and Process Command Line Arguments
 parser = argparse.ArgumentParser('Convert F-Prime Topology App Dictionary XML to OpenMCT JSON Format')
