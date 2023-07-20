@@ -47,9 +47,9 @@ function FPrimeTelemListener() {
 FPrimeTelemListener.prototype.updateState = function () {
 
     app.post("/fprime_telem", (req, res) => {
-  
+
         var i = 0;
-        while (i < this.state.length)
+        while (i < Object.keys(this.state).length)
         {
             //Check that the state key matches the recieved name
             const name = req.body.telem[i].name;
