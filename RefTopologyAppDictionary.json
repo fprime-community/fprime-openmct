@@ -1,0 +1,2588 @@
+{
+    "name": "../RefTopologyAppDictionary",
+    "key": "../RefTopologyAppDictionary",
+    "measurements": [
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "BD_Cycles",
+            "key": "blockDrv.BD_Cycles"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "RgMaxTime",
+            "key": "rateGroup1Comp.RgMaxTime"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "RgCycleSlips",
+            "key": "rateGroup1Comp.RgCycleSlips"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "RgMaxTime",
+            "key": "rateGroup2Comp.RgMaxTime"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "RgCycleSlips",
+            "key": "rateGroup2Comp.RgCycleSlips"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "RgMaxTime",
+            "key": "rateGroup3Comp.RgMaxTime"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "RgCycleSlips",
+            "key": "rateGroup3Comp.RgCycleSlips"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CommandsDispatched",
+            "key": "cmdDisp.CommandsDispatched"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CommandErrors",
+            "key": "cmdDisp.CommandErrors"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CS_LoadCommands",
+            "key": "cmdSeq.CS_LoadCommands"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CS_CancelCommands",
+            "key": "cmdSeq.CS_CancelCommands"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CS_Errors",
+            "key": "cmdSeq.CS_Errors"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CS_CommandsExecuted",
+            "key": "cmdSeq.CS_CommandsExecuted"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CS_SequencesCompleted",
+            "key": "cmdSeq.CS_SequencesCompleted"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "FilesSent",
+            "key": "fileDownlink.FilesSent"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "PacketsSent",
+            "key": "fileDownlink.PacketsSent"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "Warnings",
+            "key": "fileDownlink.Warnings"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CommandsExecuted",
+            "key": "fileManager.CommandsExecuted"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "Errors",
+            "key": "fileManager.Errors"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "FilesReceived",
+            "key": "fileUplink.FilesReceived"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "PacketsReceived",
+            "key": "fileUplink.PacketsReceived"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "Warnings",
+            "key": "fileUplink.Warnings"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "PR_NumPings",
+            "key": "pingRcvr.PR_NumPings"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "enumerations": [
+                        {
+                            "string": "ONE",
+                            "value": 0
+                        },
+                        {
+                            "string": "TWO",
+                            "value": 1
+                        },
+                        {
+                            "string": "RED",
+                            "value": 2
+                        },
+                        {
+                            "string": "BLUE",
+                            "value": 3
+                        }
+                    ],
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "ChoiceCh",
+            "key": "typeDemo.ChoiceCh"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "ChoicesCh",
+            "key": "typeDemo.ChoicesCh"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "ExtraChoicesCh",
+            "key": "typeDemo.ExtraChoicesCh"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "PingLateWarnings",
+            "key": "health.PingLateWarnings"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "enumerations": [
+                        {
+                            "string": "TRIANGLE",
+                            "value": 0
+                        },
+                        {
+                            "string": "SQUARE",
+                            "value": 1
+                        },
+                        {
+                            "string": "SINE",
+                            "value": 2
+                        },
+                        {
+                            "string": "NOISE",
+                            "value": 3
+                        }
+                    ],
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "Type",
+            "key": "SG1.Type"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "Output",
+            "key": "SG1.Output"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "History",
+            "key": "SG1.History"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "PairHistory",
+            "key": "SG1.PairHistory"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "enumerations": [
+                        {
+                            "string": "TRIANGLE",
+                            "value": 0
+                        },
+                        {
+                            "string": "SQUARE",
+                            "value": 1
+                        },
+                        {
+                            "string": "SINE",
+                            "value": 2
+                        },
+                        {
+                            "string": "NOISE",
+                            "value": 3
+                        }
+                    ],
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "Type",
+            "key": "SG2.Type"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "Output",
+            "key": "SG2.Output"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "History",
+            "key": "SG2.History"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "PairHistory",
+            "key": "SG2.PairHistory"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "enumerations": [
+                        {
+                            "string": "TRIANGLE",
+                            "value": 0
+                        },
+                        {
+                            "string": "SQUARE",
+                            "value": 1
+                        },
+                        {
+                            "string": "SINE",
+                            "value": 2
+                        },
+                        {
+                            "string": "NOISE",
+                            "value": 3
+                        }
+                    ],
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "Type",
+            "key": "SG3.Type"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "Output",
+            "key": "SG3.Output"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "History",
+            "key": "SG3.History"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "PairHistory",
+            "key": "SG3.PairHistory"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "enumerations": [
+                        {
+                            "string": "TRIANGLE",
+                            "value": 0
+                        },
+                        {
+                            "string": "SQUARE",
+                            "value": 1
+                        },
+                        {
+                            "string": "SINE",
+                            "value": 2
+                        },
+                        {
+                            "string": "NOISE",
+                            "value": 3
+                        }
+                    ],
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "Type",
+            "key": "SG4.Type"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "Output",
+            "key": "SG4.Output"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "History",
+            "key": "SG4.History"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "PairHistory",
+            "key": "SG4.PairHistory"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "enumerations": [
+                        {
+                            "string": "TRIANGLE",
+                            "value": 0
+                        },
+                        {
+                            "string": "SQUARE",
+                            "value": 1
+                        },
+                        {
+                            "string": "SINE",
+                            "value": 2
+                        },
+                        {
+                            "string": "NOISE",
+                            "value": 3
+                        }
+                    ],
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "Type",
+            "key": "SG5.Type"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "Output",
+            "key": "SG5.Output"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "History",
+            "key": "SG5.History"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "PairHistory",
+            "key": "SG5.PairHistory"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "PacketsSent",
+            "key": "sendBuffComp.PacketsSent"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "NumErrorsInjected",
+            "key": "sendBuffComp.NumErrorsInjected"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "Parameter3",
+            "key": "sendBuffComp.Parameter3"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "Parameter4",
+            "key": "sendBuffComp.Parameter4"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "enumerations": [
+                        {
+                            "string": "SEND_IDLE",
+                            "value": 0
+                        },
+                        {
+                            "string": "SEND_ACTIVE",
+                            "value": 1
+                        }
+                    ],
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "SendState",
+            "key": "sendBuffComp.SendState"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "TotalBuffs",
+            "key": "fileUplinkBufferManager.TotalBuffs"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CurrBuffs",
+            "key": "fileUplinkBufferManager.CurrBuffs"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "HiBuffs",
+            "key": "fileUplinkBufferManager.HiBuffs"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "NoBuffs",
+            "key": "fileUplinkBufferManager.NoBuffs"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "EmptyBuffs",
+            "key": "fileUplinkBufferManager.EmptyBuffs"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "Sensor1",
+            "key": "recvBuffComp.Sensor1"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "Sensor2",
+            "key": "recvBuffComp.Sensor2"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "Parameter1",
+            "key": "recvBuffComp.Parameter1"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "Parameter2",
+            "key": "recvBuffComp.Parameter2"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "MEMORY_TOTAL",
+            "key": "systemResources.MEMORY_TOTAL"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "MEMORY_USED",
+            "key": "systemResources.MEMORY_USED"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "NON_VOLATILE_TOTAL",
+            "key": "systemResources.NON_VOLATILE_TOTAL"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "NON_VOLATILE_FREE",
+            "key": "systemResources.NON_VOLATILE_FREE"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CPU",
+            "key": "systemResources.CPU"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CPU_00",
+            "key": "systemResources.CPU_00"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CPU_01",
+            "key": "systemResources.CPU_01"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CPU_02",
+            "key": "systemResources.CPU_02"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CPU_03",
+            "key": "systemResources.CPU_03"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CPU_04",
+            "key": "systemResources.CPU_04"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CPU_05",
+            "key": "systemResources.CPU_05"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CPU_06",
+            "key": "systemResources.CPU_06"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CPU_07",
+            "key": "systemResources.CPU_07"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CPU_08",
+            "key": "systemResources.CPU_08"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CPU_09",
+            "key": "systemResources.CPU_09"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CPU_10",
+            "key": "systemResources.CPU_10"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CPU_11",
+            "key": "systemResources.CPU_11"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CPU_12",
+            "key": "systemResources.CPU_12"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CPU_13",
+            "key": "systemResources.CPU_13"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CPU_14",
+            "key": "systemResources.CPU_14"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "CPU_15",
+            "key": "systemResources.CPU_15"
+        },
+        {
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ],
+            "name": "PROJECT_VERSION",
+            "key": "systemResources.PROJECT_VERSION"
+        },
+        {
+            "name": "SendFileResponse.status",
+            "key": "SendFileResponse.status",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "enumerations": [
+                        {
+                            "string": "STATUS_OK",
+                            "value": 0
+                        },
+                        {
+                            "string": "STATUS_ERROR",
+                            "value": 1
+                        },
+                        {
+                            "string": "STATUS_INVALID",
+                            "value": 2
+                        },
+                        {
+                            "string": "STATUS_BUSY",
+                            "value": 3
+                        }
+                    ],
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "SendFileResponse.context",
+            "key": "SendFileResponse.context",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "pingRcvr.testStructTelem.test1",
+            "key": "pingRcvr.testStructTelem.test1",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PingReceiver_TestStruct.test2",
+            "key": "PingReceiver_TestStruct.test2",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PingReceiver_TestStruct.test3",
+            "key": "PingReceiver_TestStruct.test3",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PingReceiver_TestStruct.test4",
+            "key": "PingReceiver_TestStruct.test4",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "enumerations": [
+                        {
+                            "string": "p1",
+                            "value": 0
+                        },
+                        {
+                            "string": "p2",
+                            "value": 1
+                        },
+                        {
+                            "string": "p3",
+                            "value": 2
+                        }
+                    ],
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "ChoicePair.firstChoice",
+            "key": "ChoicePair.firstChoice",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "enumerations": [
+                        {
+                            "string": "ONE",
+                            "value": 0
+                        },
+                        {
+                            "string": "TWO",
+                            "value": 1
+                        },
+                        {
+                            "string": "RED",
+                            "value": 2
+                        },
+                        {
+                            "string": "BLUE",
+                            "value": 3
+                        }
+                    ],
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "ChoicePair.secondChoice",
+            "key": "ChoicePair.secondChoice",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "enumerations": [
+                        {
+                            "string": "ONE",
+                            "value": 0
+                        },
+                        {
+                            "string": "TWO",
+                            "value": 1
+                        },
+                        {
+                            "string": "RED",
+                            "value": 2
+                        },
+                        {
+                            "string": "BLUE",
+                            "value": 3
+                        }
+                    ],
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "ChoiceSlurry.tooManyChoices",
+            "key": "ChoiceSlurry.tooManyChoices",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "ChoiceSlurry.separateChoice",
+            "key": "ChoiceSlurry.separateChoice",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "enumerations": [
+                        {
+                            "string": "ONE",
+                            "value": 0
+                        },
+                        {
+                            "string": "TWO",
+                            "value": 1
+                        },
+                        {
+                            "string": "RED",
+                            "value": 2
+                        },
+                        {
+                            "string": "BLUE",
+                            "value": 3
+                        }
+                    ],
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "ChoiceSlurry.choicePair",
+            "key": "ChoiceSlurry.choicePair",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "SignalPair.time",
+            "key": "SignalPair.time",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "SignalPair.value",
+            "key": "SignalPair.value",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "float",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "SignalInfo.type",
+            "key": "SignalInfo.type",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "enumerations": [
+                        {
+                            "string": "TRIANGLE",
+                            "value": 0
+                        },
+                        {
+                            "string": "SQUARE",
+                            "value": 1
+                        },
+                        {
+                            "string": "SINE",
+                            "value": 2
+                        },
+                        {
+                            "string": "NOISE",
+                            "value": 3
+                        }
+                    ],
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "SignalInfo.history",
+            "key": "SignalInfo.history",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "SignalInfo.pairHistory",
+            "key": "SignalInfo.pairHistory",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PacketStat.BuffRecv",
+            "key": "PacketStat.BuffRecv",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PacketStat.BuffErr",
+            "key": "PacketStat.BuffErr",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "integer",
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PacketStat.PacketStatus",
+            "key": "PacketStat.PacketStatus",
+            "values": [
+                {
+                    "key": "value",
+                    "name": "Value",
+                    "format": "enum",
+                    "enumerations": [
+                        {
+                            "string": "PACKET_STATE_NO_PACKETS",
+                            "value": 0
+                        },
+                        {
+                            "string": "PACKET_STATE_OK",
+                            "value": 1
+                        },
+                        {
+                            "string": "PACKET_STATE_ERRORS",
+                            "value": 3
+                        }
+                    ],
+                    "hints": {
+                        "range": 1
+                    }
+                },
+                {
+                    "key": "utc",
+                    "source": "timestamp",
+                    "name": "Timestamp",
+                    "format": "utc",
+                    "hints": {
+                        "domain": 1
+                    }
+                }
+            ]
+        }
+    ]
+}

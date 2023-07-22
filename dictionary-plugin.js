@@ -1,5 +1,5 @@
 function getDictionary() {
-    return http.get('/MPPTDeploymentTopologyAppDictionary.json')
+    return http.get('/RefTopologyAppDictionary.json')
         .then(function (result) {
             return result.data;
         });

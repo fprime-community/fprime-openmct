@@ -43,31 +43,63 @@ class TelemPipeline(StandardPipeline):
 
     def update_telem_hist(self):
         self.telem_hist = self.telem_chron_hist.retrieve_new()
+        #print(self.telem_hist)
         if (len(self.telem_hist) > self.max_state_count):
             self.max_state_count = len(self.telem_hist)
 
     def set_telem_json(self):
         self.telem_data = []
         for hist in self.telem_hist:
-            hist_name = str(hist.template.comp_name) + '.' + str(hist.template.name)
+            #print(hist)
 
-            hist_data = {
-                        'name': hist_name, 
-                        'data': {
-                                'id':hist.id,
-                                'val':hist.get_val(),
-                                'time':hist.time.to_readable()
+            #check for structs
+            if isinstance(hist.get_val(), dict):
+                #print(hist.get_val().items())
+                i = 0
+                for key, val in hist.get_val().items():
+                    hist_name = hist.template.ch_type_obj.__name__[hist.template.ch_type_obj.__name__.find('::'):].replace('::', '') + '.' + key
+                    #print(hist_name)
+
+                    hist_data = {
+                                'name': hist_name, 
+                                'data': {
+                                        'id':hist.id+i,
+                                        'val': val,
+                                        'time':hist.time.to_readable()
+                                        }
                                 }
-                        }
-            
-            if not self.json_writeable:
-                self.telem_init_states[hist_name] = hist.get_val()
-                self.json_writeable = True
+                    
+                    self.telem_data.append(hist_data)
 
-            self.telem_data.append(hist_data)
+                    if self.json_writeable:
+                        self.telem_init_states[hist_name] = val
+
+                    i = i + 1
+
+            else: 
+                hist_name = str(hist.template.comp_name) + '.' + str(hist.template.name)
+
+                hist_data = {
+                            'name': hist_name, 
+                            'data': {
+                                    'id':hist.id,
+                                    'val':hist.get_val(),
+                                    'time':hist.time.to_readable()
+                                    }
+                            }
+                
+                self.telem_data.append(hist_data)
+
+                if self.json_writeable:
+                    self.telem_init_states[hist_name] = hist.get_val()
+
+
+        self.json_writeable = True
+
 
     def write_telem_json(self, fname="openmct/initial_states.json"):
         self.telem_init_json = json.dumps(self.telem_init_states, indent=4)
+        #print(len(self.telem_init_states))
         with open(fname, "w") as outfile:
             outfile.write(self.telem_init_json)
 
@@ -96,20 +128,21 @@ telem_pipeline = TelemPipeline(connection_ip=args.ip_address,
 
 # Continuously poll for telemetry from the F-Prime GDS Pipeline
 write_json = True
+i = 0
 while True:
-
-    #Write initial states to initial_states.json and save it in the user-specified OpenMCT directory
-    if telem_pipeline.json_writeable and write_json:
-        telem_pipeline.write_telem_json(args.openmct_dir + "initial_states.json")
-        write_json = False
-
     #Poll the F-Prime GDS Pipeline for telemetry, and update the latest telemetry JSON
     telem_pipeline.update_telem_hist() 
     telem_pipeline.set_telem_json()
+
+    #Write initial states to initial_states.json and save it in the user-specified OpenMCT directory
+    if telem_pipeline.json_writeable and i==1:
+        telem_pipeline.write_telem_json("../initial_states.json")
+        write_json = False
     
     #Post Telemetry Information to the server address OpenMCT is listening on
     telem_pipeline.post_telem(args.openmct_uri)
 
     time.sleep(1/args.telem_rate)
+    i = i+1
 
 

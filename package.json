@@ -4,7 +4,8 @@
   "description": "Server for Connecting F-Prime Telemetry to OpenMCT Server",
   "main": "fprime-openmct-server/server.js",
   "scripts": {
-    "start": "node fprime-openmct-server/server.js"
+    "start": "node fprime-openmct-server/server.js",
+    "postinstall": "cd openmct && npm install"
   },
   "dependencies": {
     "express": "^4.14.1",
