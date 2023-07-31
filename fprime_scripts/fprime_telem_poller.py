@@ -8,6 +8,7 @@ import requests
 import time 
 
 import json
+import sys
 
 
 
@@ -51,13 +52,14 @@ class TelemPipeline(StandardPipeline):
         self.telem_data = []
         for hist in self.telem_hist:
             #print(hist)
+            self.json_writeable = True
 
             #check for structs
             if isinstance(hist.get_val(), dict):
                 #print(hist.get_val().items())
                 i = 0
                 for key, val in hist.get_val().items():
-                    hist_name = hist.template.ch_type_obj.__name__[hist.template.ch_type_obj.__name__.find('::'):].replace('::', '') + '.' + key
+                    hist_name = str(hist.template.comp_name) + '.' + str(hist.template.name) + '.' + hist.template.ch_type_obj.__name__[hist.template.ch_type_obj.__name__.find('::'):].replace('::', '') + '.' + key
                     #print(hist_name)
 
                     hist_data = {
@@ -94,7 +96,6 @@ class TelemPipeline(StandardPipeline):
                     self.telem_init_states[hist_name] = hist.get_val()
 
 
-        self.json_writeable = True
 
 
     def write_telem_json(self, fname="openmct/initial_states.json"):
@@ -110,12 +111,13 @@ class TelemPipeline(StandardPipeline):
 #Set up and Process Command Line Arguments
 parser = argparse.ArgumentParser('Post F-Prime Telemetry Captured from F-Prime GDS to a Server to be Read by OpenMCT')
 parser.add_argument('-d', '--dict-path', dest='dict_path', type=str, required=True, help='Input file path to F-Prime Topology App Dictionary File')
-parser.add_argument('-l', '--log-path', dest='log_path', type=str, required=True, help='Path to store F-Prime Telemetry logs')
+parser.add_argument('-l', '--log-path', dest='log_path', type=str, required=False, default='~/', help='Path to store F-Prime Telemetry logs')
 parser.add_argument('--ip-address', dest='ip_address', type=str, required=False, default='127.0.0.1', help="IP Address of the F-Prime GDS TCP Socket Server")
 parser.add_argument('--ip-port', dest='ip_port', type=int, required=False, default=50050, help='Port Number of the F-Prime GDS TCP Socket Server')
 parser.add_argument('--openmct-uri', dest='openmct_uri', type=str, required=False, default="http://127.0.0.1:4052/fprime_telem", help="URI of the OpenMCT Server. The URI at which the F-Prime telemetry will be broadcasted.")
 parser.add_argument('--openmct-dir', dest='openmct_dir', type=str, required=False, default='', help="Directory where the OpenMCT Server is located")
 parser.add_argument('-r', '--telem-rate', dest='telem_rate', type=float, required=False, default=1, help="Rate(in Hz) at which we want to poll the Telemetry Pipeline for new telemetry")
+parser.add_argument('-w', '--write-init', dest='write_init', type=int, required=False, default=0, help="Write initial MPPT States to initial_states.json for the OpenMCT Server to read")
 args = parser.parse_args()
 
 
@@ -134,10 +136,12 @@ while True:
     telem_pipeline.update_telem_hist() 
     telem_pipeline.set_telem_json()
 
-    #Write initial states to initial_states.json and save it in the user-specified OpenMCT directory
-    if telem_pipeline.json_writeable and i==1:
-        telem_pipeline.write_telem_json("../initial_states.json")
-        write_json = False
+    # #Write initial states to initial_states.json and save it in the user-specified OpenMCT directory
+    # if args.write_init and telem_pipeline.json_writeable:
+    #     telem_pipeline.write_telem_json("../initial_states.json")
+    #     print('Exiting')
+    #     sys.exit(0)
+        
     
     #Post Telemetry Information to the server address OpenMCT is listening on
     telem_pipeline.post_telem(args.openmct_uri)

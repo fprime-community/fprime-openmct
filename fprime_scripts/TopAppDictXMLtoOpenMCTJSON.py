@@ -20,6 +20,7 @@ class EnumIngester:
         self._root = root
         self._types = self.traverseLevel(self._root)
         self._enums = self.formulateEnum(self.traverseLevel(self._types[0]))
+        self._init_serializables = {}
         self._serializables = self.formulateSerializable(self.traverseLevel(self._types[1]))
 
 
@@ -56,15 +57,17 @@ class EnumIngester:
                 for member in members:
                     serializable_entry = {}
                     #print((member.tag, member.attrib))
-                    serializable_entry['name'] = serializable.attrib['type'][serializable.attrib['type'].find('::'):].replace('::', '') + '.' + member.attrib['name']
-                    serializable_entry['key'] = serializable_entry['name']
+                    serializable_entry['name'] = serializable.attrib['type'] #serializable.attrib['type'][serializable.attrib['type'].find('::'):].replace('::', '') + '.' + member.attrib['name']
+                    serializable_entry['key'] = member.attrib['name']
                     serializable_entry['values'] = [{}, {}]
                     serializable_entry['values'][0]['key'] = "value" #channel_obj.id
                     serializable_entry['values'][0]['name'] = "Value" #channel_obj.name
                     if(member.attrib['type'] in self.__float_type_list):
                         serializable_entry['values'][0]['format'] = 'float'
+                        self._init_serializables[serializable_entry['name']] = 0.0
                     elif(member.attrib['type'] in self.__int_type_list):
                         serializable_entry['values'][0]['format'] = 'integer'
+                        self._init_serializables[serializable_entry['name']] = 0
                     else:
                         serializable_entry['values'][0]['format'] = 'enum'
 
@@ -72,6 +75,7 @@ class EnumIngester:
                         for enum_vals in self._enums:
                             if(enum_vals['type'] == member.attrib['type']):
                                 serializable_entry['values'][0]['enumerations'] = enum_vals['val']
+                                self._init_serializables[serializable_entry['name']] = enum_vals['val'][0]['string']
 
                     serializable_entry['values'][0]['hints'] = {}
                     serializable_entry['values'][0]['hints']['range'] = 1
@@ -84,6 +88,7 @@ class EnumIngester:
                     serializable_entry['values'][1]['hints']['domain'] = 1
 
                     serializable_entries.append(serializable_entry)
+
 
         return serializable_entries
 
@@ -108,14 +113,14 @@ class TopologyAppDictionaryJSONifier():
         self.__framework_list = ['::FRAMEWORK_VERSIONString']
         self.__measurement_list = []
 
+        self.__init_states = {}
+
         #Formulate dict from XML Tree to get enum decomposition
         tree = ET.parse(xml_path)
         root = tree.getroot()
-        self.__dict_enum = EnumIngester(root)
+        self.__dict_xml = EnumIngester(root)
 
-        self.__serializable_list = self.__dict_enum._serializables_type_list
-
-        #print(self.__dict_enum.formulateSerializable(self.__dict_enum._serializables))
+        self.__serializable_list = self.__dict_xml._serializables_type_list
 
         self.__dict_test = Dictionaries()
         self.__dict_test.load_dictionaries(xml_path, packet_spec=None)
@@ -135,31 +140,11 @@ class TopologyAppDictionaryJSONifier():
         for channel_num, channel_obj in self.__channel_list.items():
             measurement_entry = {}
             measurement_entry['values'] = [{}, {}]
-            #print(channel_num, channel_obj)
-            #if(isinstance())
-            #print(channel_obj.ch_type_obj.__name__)
+
             measurement_entry['name'] = channel_obj.name
             measurement_entry['key'] = channel_obj.comp_name + '.' + channel_obj.name 
             measurement_entry['values'][0]['key'] = "value" #channel_obj.id
             measurement_entry['values'][0]['name'] = "Value" #channel_obj.name
-            if(channel_obj.ch_type_obj.__name__ in self.__float_type_list):
-                measurement_entry['values'][0]['format'] = 'float'
-            elif(channel_obj.ch_type_obj.__name__ in self.__int_type_list):
-                measurement_entry['values'][0]['format'] = 'integer'
-            elif (channel_obj.ch_type_obj.__name__ in self.__framework_list):
-                continue
-            elif (channel_obj.ch_type_obj.__name__ in self.__serializable_list):
-                continue
-            else:
-                measurement_entry['values'][0]['format'] = 'enum'
-
-            
-            if(measurement_entry['values'][0]['format'] == 'enum'):
-                for enum_vals in self.__dict_enum._enums:
-                    if(enum_vals['type'] == channel_obj.ch_type_obj.__name__):
-                        measurement_entry['values'][0]['enumerations'] = enum_vals['val']
-
-
             measurement_entry['values'][0]['hints'] = {}
             measurement_entry['values'][0]['hints']['range'] = 1
 
@@ -169,27 +154,65 @@ class TopologyAppDictionaryJSONifier():
             measurement_entry['values'][1]['format'] = 'utc'
             measurement_entry['values'][1]['hints'] = {}
             measurement_entry['values'][1]['hints']['domain'] = 1
+            
+            if(channel_obj.ch_type_obj.__name__ in self.__float_type_list):
+                measurement_entry['values'][0]['format'] = 'float'
+                self.__init_states[measurement_entry['key']] = 0.0
+            elif(channel_obj.ch_type_obj.__name__ in self.__int_type_list):
+                measurement_entry['values'][0]['format'] = 'integer'
+                self.__init_states[measurement_entry['key']] = 0
+            elif (channel_obj.ch_type_obj.__name__ in self.__framework_list):
+                continue
+            elif (channel_obj.ch_type_obj.__name__ in self.__serializable_list):
+                for struct_entry in self.__dict_xml._serializables:
+                    if struct_entry['name'] == channel_obj.ch_type_obj.__name__:
+                        new_entry = {}
+                        new_entry['name'] = measurement_entry['key'] + '.' + struct_entry['name'][struct_entry['name'].find('::'):].replace('::', '') + '.' + struct_entry['key']
+                        new_entry['key'] = new_entry['name']
+                        new_entry['values'] = measurement_entry['values']
+                        self.__init_states[new_entry['name']] = 0
+                        self.__measurement_list.append(new_entry) 
+      
+                continue
+            else:
+                measurement_entry['values'][0]['format'] = 'enum'
+
+            
+            if(measurement_entry['values'][0]['format'] == 'enum'):
+                for enum_vals in self.__dict_xml._enums:
+                    if(enum_vals['type'] == channel_obj.ch_type_obj.__name__):
+                        measurement_entry['values'][0]['enumerations'] = enum_vals['val']
+                        self.__init_states[measurement_entry['key']] = enum_vals['val'][0]['string']
+
+
+
 
             self.__measurement_list.append(measurement_entry)   
 
-        # Load in Structs 
-        for struct_entry in self.__dict_enum._serializables:
-            self.__measurement_list.append(struct_entry) 
+        self.__init_states = {**self.__init_states, **self.__dict_xml._init_serializables}
 
     #Write OpenMCT dictionary to a JSON file
-    def writeJSON(self, fname, fpath=''):
+    def writeOpenMCTJSON(self, fname, fpath='../'):
         openmct_json = json.dumps(self.__openmct_telem_dict, indent=4)
         with open(fpath + fname + ".json", "w") as outfile:
-            outfile.write(openmct_json)                 
+            outfile.write(openmct_json)
+
+    def writeInitialStatesJSON(self, fname, fpath='../'):
+        initialstates_json = json.dumps(self.__init_states, indent=4)
+        with open(fpath + fname + ".json", "w") as outfile:
+            outfile.write(initialstates_json)     
+
 
 #Set up and Process Command Line Arguments
 parser = argparse.ArgumentParser('Convert F-Prime Topology App Dictionary XML to OpenMCT JSON Format')
-parser.add_argument('-f', '--file', dest='file', type=str, required=False, default='FPrimeDeploymentTopologyAppDictionary.xml', help='Input file path to F-Prime Topology App Dictionary File')
-parser.add_argument('-o', '--output-dir', dest='output_dir', required=False, default='', help='Output file directory to write JSON to')
+parser.add_argument('-f', '--file', dest='file', type=str, required=True, default='FPrimeDeploymentTopologyAppDictionary.xml', help='Input file path to F-Prime Topology App Dictionary File')
+parser.add_argument('-o', '--output-dir', dest='output_dir', required=False, default='../', help='Output file directory to write JSON to')
 args = parser.parse_args()
 
 #Convert Topology App Dictionary XML file to an OpenMCT JSON 
 top_dict = TopologyAppDictionaryJSONifier(args.file)
-top_dict.writeJSON(args.file.replace('.xml', ''), args.output_dir)
+top_dict.writeOpenMCTJSON('FPrimeDeploymentTopologyAppDictionary', args.output_dir)
+top_dict.writeInitialStatesJSON('initial_states', args.output_dir)
+
 
 

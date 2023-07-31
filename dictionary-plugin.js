@@ -1,5 +1,5 @@
 function getDictionary() {
-    return http.get('/RefTopologyAppDictionary.json')
+    return http.get('/FPrimeDeploymentTopologyAppDictionary.json')
         .then(function (result) {
             return result.data;
         });
