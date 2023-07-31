@@ -1,7 +1,7 @@
-import argparse
 import xml.etree.ElementTree as ET
 
 from fprime_gds.common.pipeline.dictionaries import Dictionaries
+from fprime_gds.executables.cli import ParserBase, StandardPipelineParser
 import json
 
 class EnumIngester:
@@ -154,7 +154,7 @@ class TopologyAppDictionaryJSONifier():
             measurement_entry['values'][1]['format'] = 'utc'
             measurement_entry['values'][1]['hints'] = {}
             measurement_entry['values'][1]['hints']['domain'] = 1
-            
+
             if(channel_obj.ch_type_obj.__name__ in self.__float_type_list):
                 measurement_entry['values'][0]['format'] = 'float'
                 self.__init_states[measurement_entry['key']] = 0.0
@@ -204,15 +204,15 @@ class TopologyAppDictionaryJSONifier():
 
 
 #Set up and Process Command Line Arguments
-parser = argparse.ArgumentParser('Convert F-Prime Topology App Dictionary XML to OpenMCT JSON Format')
-parser.add_argument('-f', '--file', dest='file', type=str, required=True, default='FPrimeDeploymentTopologyAppDictionary.xml', help='Input file path to F-Prime Topology App Dictionary File')
-parser.add_argument('-o', '--output-dir', dest='output_dir', required=False, default='../', help='Output file directory to write JSON to')
-args = parser.parse_args()
+arguments, _ = ParserBase.parse_args([StandardPipelineParser],
+                                             description="Topology App Dictionary XML to OpenMCT JSON Parser",
+                                             client=True  # This is a client script, thus client=True must be specified
+                                             )
 
 #Convert Topology App Dictionary XML file to an OpenMCT JSON 
-top_dict = TopologyAppDictionaryJSONifier(args.file)
-top_dict.writeOpenMCTJSON('FPrimeDeploymentTopologyAppDictionary', args.output_dir)
-top_dict.writeInitialStatesJSON('initial_states', args.output_dir)
+top_dict = TopologyAppDictionaryJSONifier(arguments.dictionary)
+top_dict.writeOpenMCTJSON('FPrimeDeploymentTopologyAppDictionary', '../')
+top_dict.writeInitialStatesJSON('initial_states', '../')
 
 
 

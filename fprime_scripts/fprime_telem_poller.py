@@ -1,14 +1,14 @@
-import argparse
-
 from fprime_gds.common.pipeline.standard import StandardPipeline
 from fprime_gds.common.utils.config_manager import ConfigManager
 from fprime_gds.common.history.chrono import ChronologicalHistory
+
+from fprime_gds.executables.cli import ParserBase, StandardPipelineParser
+from typing import Any, Dict, Tuple
 
 import requests 
 import time 
 
 import json
-import sys
 
 
 
@@ -107,26 +107,66 @@ class TelemPipeline(StandardPipeline):
     def post_telem(self, uri="http://127.0.0.1:4052/fprime_telem"):
         requests.post(uri, json={'name': 'heli', 'telem': self.telem_data}) 
 
+class OpenMCTTelemetryPollerParser(ParserBase):
+    """  GDS style argument parser used to add an argument specifically for this script
+
+    GDS parsers define two methods. `get_arguments` that returns a dictionary of flag tuples to a dictionary of key word
+    arguments provided to argparse. The tuple (keys) are the "arg values" supplied to `argparse.Parser.add_argument()`
+    and the value of the is the "kwargs" supplied.
+
+    `handle_arguments` takes in `args` and keyword arguments. This function allows users to validate, update, and derive
+    from the arguments received.
+    """
+
+    def get_arguments(self) -> Dict[Tuple[str, ...], Dict[str, Any]]:
+        """ Get the arguments to add into the parser system
+
+        Specifically add a channel-name argument driven from --channel-name.
+
+        Return:
+            tuple of flags to argparse key word arguments
+        """
+        return {
+            ("--openmct-uri",): {
+                "dest": "openmct_uri",
+                "type": str,
+                "default": "http://127.0.0.1:4052/fprime_telem",
+                "help": "URI of the OpenMCT Server. The URI at which the F-Prime telemetry will be broadcasted.",
+                "required": False
+            },
+            ("--openmct-telem-rate",): {
+                "dest": "openmct_telem_rate",
+                "type": float,
+                "default": 1,
+                "help": "Rate(in Hz) at which we want to poll the F-Prime Telemetry Pipeline for new telemetry",
+                "required": False
+            }
+        }
+
+    def handle_arguments(self, args, **kwargs):
+        """ Do no special argument processing
+
+        Handle arguments can be used to process arguments for later user (e.g. derive special arguments, validate
+        arguments passed in, etc). Users should ensure to pass out an argument namespace that is, or is a modified copy
+        of, the supplied args.
+
+        Args:
+            args: namespace containing arguments passed in. Must be returned, or copied then modified, then returned.
+            **kwargs: key-word arguments passed in to allow local adjustment. unused.
+        """
+        return args
 
 #Set up and Process Command Line Arguments
-parser = argparse.ArgumentParser('Post F-Prime Telemetry Captured from F-Prime GDS to a Server to be Read by OpenMCT')
-parser.add_argument('-d', '--dict-path', dest='dict_path', type=str, required=True, help='Input file path to F-Prime Topology App Dictionary File')
-parser.add_argument('-l', '--log-path', dest='log_path', type=str, required=False, default='~/', help='Path to store F-Prime Telemetry logs')
-parser.add_argument('--ip-address', dest='ip_address', type=str, required=False, default='127.0.0.1', help="IP Address of the F-Prime GDS TCP Socket Server")
-parser.add_argument('--ip-port', dest='ip_port', type=int, required=False, default=50050, help='Port Number of the F-Prime GDS TCP Socket Server')
-parser.add_argument('--openmct-uri', dest='openmct_uri', type=str, required=False, default="http://127.0.0.1:4052/fprime_telem", help="URI of the OpenMCT Server. The URI at which the F-Prime telemetry will be broadcasted.")
-parser.add_argument('--openmct-dir', dest='openmct_dir', type=str, required=False, default='', help="Directory where the OpenMCT Server is located")
-parser.add_argument('-r', '--telem-rate', dest='telem_rate', type=float, required=False, default=1, help="Rate(in Hz) at which we want to poll the Telemetry Pipeline for new telemetry")
-parser.add_argument('-w', '--write-init', dest='write_init', type=int, required=False, default=0, help="Write initial MPPT States to initial_states.json for the OpenMCT Server to read")
-args = parser.parse_args()
-
-
+arguments, _ = ParserBase.parse_args([StandardPipelineParser, OpenMCTTelemetryPollerParser],
+                                             description="OpenMCT Telemetry Polling Parser",
+                                             client=True  # This is a client script, thus client=True must be specified
+                                             )
 
 # instantiate the GDS and connect to the Deployment
-telem_pipeline = TelemPipeline(connection_ip=args.ip_address, 
-                               connection_port=args.ip_port,
-                               dict_path=args.dict_path,
-                               log_path=args.log_path)
+telem_pipeline = TelemPipeline(connection_ip=arguments.tts_addr, 
+                               connection_port=arguments.tts_port,
+                               dict_path=arguments.dictionary,
+                               log_path=arguments.logs)
 
 # Continuously poll for telemetry from the F-Prime GDS Pipeline
 write_json = True
@@ -135,18 +175,11 @@ while True:
     #Poll the F-Prime GDS Pipeline for telemetry, and update the latest telemetry JSON
     telem_pipeline.update_telem_hist() 
     telem_pipeline.set_telem_json()
-
-    # #Write initial states to initial_states.json and save it in the user-specified OpenMCT directory
-    # if args.write_init and telem_pipeline.json_writeable:
-    #     telem_pipeline.write_telem_json("../initial_states.json")
-    #     print('Exiting')
-    #     sys.exit(0)
-        
     
     #Post Telemetry Information to the server address OpenMCT is listening on
-    telem_pipeline.post_telem(args.openmct_uri)
+    telem_pipeline.post_telem(arguments.openmct_uri)
 
-    time.sleep(1/args.telem_rate)
+    time.sleep(1/arguments.openmct_telem_rate)
     i = i+1
 
 
