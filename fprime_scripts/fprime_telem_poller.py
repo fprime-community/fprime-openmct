@@ -43,7 +43,8 @@ class TelemPipeline(StandardPipeline):
         return self.telem_hist
 
     def update_telem_hist(self):
-        self.telem_hist = self.telem_chron_hist.retrieve_new()
+        self.telem_hist = self.telem_chron_hist.retrieve_new() #self.histories.channels.retrieve_new()
+        self.telem_chron_hist.clear()
         #print(self.telem_hist)
         if (len(self.telem_hist) > self.max_state_count):
             self.max_state_count = len(self.telem_hist)
@@ -51,7 +52,6 @@ class TelemPipeline(StandardPipeline):
     def set_telem_json(self):
         self.telem_data = []
         for hist in self.telem_hist:
-            #print(hist)
             self.json_writeable = True
 
             #check for structs
@@ -80,7 +80,6 @@ class TelemPipeline(StandardPipeline):
 
             else: 
                 hist_name = str(hist.template.comp_name) + '.' + str(hist.template.name)
-
                 hist_data = {
                             'name': hist_name, 
                             'data': {
@@ -89,7 +88,7 @@ class TelemPipeline(StandardPipeline):
                                     'time':hist.time.to_readable()
                                     }
                             }
-                
+                    
                 self.telem_data.append(hist_data)
 
                 if self.json_writeable:
@@ -137,7 +136,7 @@ class OpenMCTTelemetryPollerParser(ParserBase):
             ("--openmct-telem-rate",): {
                 "dest": "openmct_telem_rate",
                 "type": float,
-                "default": 1,
+                "default": 0.5,
                 "help": "Rate(in Hz) at which we want to poll the F-Prime Telemetry Pipeline for new telemetry",
                 "required": False
             }
