@@ -9,10 +9,10 @@ var fs = require('fs');
 
 //Get Initial Telemetry States from data.json
 var state = JSON.parse(fs.readFileSync('initial_states.json', 'utf8'));
-console.log(state);
+//console.log(state);
 
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '500mb'}));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Server listening to PORT 4052
@@ -24,7 +24,7 @@ app.listen(4052);
  */
 function FPrimeTelemListener() {
     this.state = state;
-    console.log(state);
+    //console.log(state);
     this.state["comms.recd"] = 0;
     this.state["comms.sent"] = 0;
     this.history = {};
@@ -49,18 +49,23 @@ FPrimeTelemListener.prototype.updateState = function () {
     app.post("/fprime_telem", (req, res) => {
 
         var i = 0;
-        while (i < Object.keys(this.state).length)
+        //Process each telemetry entry in a request
+        while (i < req.body.telem.length)
         {
-            //Check that the state key matches the recieved name
-            const name = req.body.telem[i].name;
-            console.log(name);
-            for (const [ key, value ] of Object.entries(this.state)) {
-                    if (key == name) {
-                        console.log("processing");
-                        //Assign State entries to the recieved data values 
-                        this.state[key] = req.body.telem[i].data.val;
-                        console.log(this.state[key]);
-                    }
+            try {
+                //Check that the state key matches the recieved name
+                const name = req.body.telem[i].name;
+                //console.log(name);
+                for (const [ key, value ] of Object.entries(this.state)) {
+                        if (key == name) {
+                            //console.log("processing");
+                            //Assign State entries to the recieved data values 
+                            this.state[key] = req.body.telem[i].data.val;
+                            //console.log(this.state[key]);
+                        }
+                }     
+            } catch (error) {
+                console.log(error);
             }
         
         i = i+1;   
