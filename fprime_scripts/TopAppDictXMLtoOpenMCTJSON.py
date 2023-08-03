@@ -184,12 +184,7 @@ class TopologyAppDictionaryJSONifier():
                         measurement_entry['values'][0]['enumerations'] = enum_vals['val']
                         self.__init_states[measurement_entry['key']] = enum_vals['val'][0]['string']
 
-
-
-
             self.__measurement_list.append(measurement_entry)   
-
-        self.__init_states = {**self.__init_states, **self.__dict_xml._init_serializables}
 
     #Write OpenMCT dictionary to a JSON file
     def writeOpenMCTJSON(self, fname, fpath='../'):
