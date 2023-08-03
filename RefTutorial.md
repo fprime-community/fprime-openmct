@@ -26,6 +26,22 @@ fprime-gds
 ```
 This will launch a web browser with the GDS, as well as the Ref deployment locally. You should see a green dot at the top right of the GDS webpage.
 
+## Generating the OpenMCT JSON Telemetry Definitions and initial states
+To generate our telemetry definitions and initial states in OpenMCT, we will need to use the `RefTopologyAppDictionary.xml` generated from our deployment build. 
+```
+cd fprime-openmct/fprime_scripts # Navigate to the directory where fprime-openmct is installed
+python TopAppDictXMLtoOpenMCTJSON.py --dictionary {path to F-Prime Topology App Dictionary XML}
+cd ..
+npm start  #Start the OpenMCT Server
+```
+
+## Subscribing and Publishing FPrime Telemetry via F-Prime GDS 
+To poll for realtime telemetry, we must run `fprime_telem_poller.py`. 
+```
+cd fprime_scripts
+python fprime_telem_poller.py --dictionary {path to F-Prime Topology App Dictionary XML} 
+```
+Going to `localhost:8080` on a browser will show the F-Prime Telemetry Channels registered in the framework, outputting real time telemetry recieved. 
 
 
 
