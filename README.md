@@ -48,3 +48,5 @@ cd fprime_scripts
 python fprime_telem_poller.py --dictionary {path to F-Prime Topology App Dictionary XML} 
 ```
 Going to `localhost:8080` on a browser will show the F-Prime Telemetry Channels registered in the framework, outputting real time telemetry recieved. 
+
+For additional details on running the tool with the standard `Ref` deployment, see `RefTutorial.md`. 
