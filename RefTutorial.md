@@ -25,6 +25,7 @@ Navigate to the `Ref` directory. Run the following command:
 fprime-gds
 ```
 This will launch a web browser with the GDS, as well as the Ref deployment locally. You should see a green dot at the top right of the GDS webpage.
+![alt text](https://github.com/mohitsingh999/fprime-openmct/blob/devel/images/RefDeploymentGDS.png)
 
 ## Generating the OpenMCT JSON Telemetry Definitions and initial states
 To generate our telemetry definitions and initial states in OpenMCT, we will need to use the `RefTopologyAppDictionary.xml` generated from our deployment build. 
@@ -42,6 +43,19 @@ cd fprime_scripts
 python fprime_telem_poller.py --dictionary {path to F-Prime Topology App Dictionary XML} 
 ```
 Going to `localhost:8080` on a browser will show the F-Prime Telemetry Channels registered in the framework, outputting real time telemetry recieved. 
+![alt text](https://github.com/mohitsingh999/fprime-openmct/blob/devel/images/RefDeploymentOpenMCTTelemChannels.png)
+
+## Viewing OpenMCT Telemetry
+Click on the BD_Cycles Telemetry icon to see an example of telemetry. You should see the following display. 
+![alt text](https://github.com/mohitsingh999/fprime-openmct/blob/devel/images/RefDeploymentOpenMCTTelemBDCycles.png)
+The default time mode is OpenMCT is `Fixed Timespan`, does not have the x axis of the plots moving along with the data coming in. To get Real Time Telemetry and have the time axis on the telemetry plots be constantly updated, click on the `Fixed Timestamp` Icon on the bottom left of the plot and switch to `Local Clock`. The x axis will now move with respect to time. In addition, changing the `History` icon to be `1 Minute` instead of the default `1 hour` can allow users to see the most up to date telemetry. Here is an example of `BD_Cycle` telemetry using `Local Clock` with a `History` of `1 Minute`. 
+![alt text](https://github.com/mohitsingh999/fprime-openmct/blob/devel/images/RefDeploymentOpenMCTTelemRealTime1MinBDCycles.png)
+OpenMCT also gives users access to a wide variety of ways of viewing Telemetry, in addition to the standard plots as a function of time. Using the create plot on the top right, users can create layouts and add widgets such as Gauges, Bar Graphs, Stacked/Overlay Plots, and Tables.
+
+
+![alt text](https://github.com/mohitsingh999/fprime-openmct/blob/devel/images/RefDeploymentOpenMCTTelemPlugins.png)
+
+
 
 
 
