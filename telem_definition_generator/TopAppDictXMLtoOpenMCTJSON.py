@@ -202,6 +202,15 @@ class TopologyAppDictionaryJSONifier():
         with open(fpath + fname + ".json", "w") as outfile:
             outfile.write(initialstates_json)     
 
+if __name__ == '__main__':
+    #Set up and Process Command Line Arguments
+    arguments, _ = ParserBase.parse_args([StandardPipelineParser],
+                                                description="Topology App Dictionary XML to OpenMCT JSON Parser",
+                                                client=True  # This is a client script, thus client=True must be specified
+                                                )
 
-
+    #Convert Topology App Dictionary XML file to an OpenMCT JSON 
+    top_dict = TopologyAppDictionaryJSONifier(arguments.dictionary)
+    top_dict.writeOpenMCTJSON('FPrimeDeploymentTopologyAppDictionary', '../')
+    top_dict.writeInitialStatesJSON('initial_states', '../')
 
