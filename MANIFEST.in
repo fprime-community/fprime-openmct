@@ -1,0 +1,12 @@
+include README.md 
+include RefTutorial.md
+include dictionary-plugin.js
+include index.html
+include package.json
+include realtime-telemetry-plugin.js
+recursive-include dist *
+recursive-include fprime-openmct-server *
+recursive-include images *
+recursive-include lib *
+recursive-include openmct *
+recursive-include dist *
