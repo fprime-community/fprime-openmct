@@ -29,7 +29,7 @@ pip install fprime_gds==3.2.0 fprime_tools==3.2.0
 
 ### Generating the OpenMCT JSON and Initial States
 ```
-cd fprime_scripts
+cd telem_definition_generator
 python TopAppDictXMLtoOpenMCTJSON.py --dictionary {path to F-Prime Topology App Dictionary XML}
 ```
 
@@ -44,7 +44,7 @@ This command starts up the OpenMCT server with the Telemetry Definitions generat
 ### Subscribing and Publishing FPrime Telemetry via F-Prime GDS 
 To poll for realtime telemetry, we must run `fprime_telem_poller.py`. 
 ```
-cd fprime_scripts
+cd telem_poller
 python fprime_telem_poller.py --dictionary {path to F-Prime Topology App Dictionary XML} 
 ```
 Going to `localhost:8080` on a browser will show the F-Prime Telemetry Channels registered in the framework, outputting real time telemetry recieved. 
