@@ -2,7 +2,7 @@ from fprime_gds.common.pipeline.standard import StandardPipeline
 from fprime_gds.common.utils.config_manager import ConfigManager
 from fprime_gds.common.history.chrono import ChronologicalHistory
 
-from fprime_gds.executables.cli import ParserBase, StandardPipelineParser
+from fprime_gds.executables.cli import ParserBase, StandardPipelineParser, OpenMCTTelemetryPollerParser
 from typing import Any, Dict, Tuple
 
 import requests 
@@ -43,8 +43,7 @@ class TelemPipeline(StandardPipeline):
         return self.telem_hist
 
     def update_telem_hist(self):
-        self.telem_hist = self.telem_chron_hist.retrieve_new() #self.histories.channels.retrieve_new()
-        self.telem_chron_hist.clear()
+        self.telem_hist = self.telem_chron_hist.retrieve_new()
         #print(self.telem_hist)
         if (len(self.telem_hist) > self.max_state_count):
             self.max_state_count = len(self.telem_hist)
@@ -52,6 +51,7 @@ class TelemPipeline(StandardPipeline):
     def set_telem_json(self):
         self.telem_data = []
         for hist in self.telem_hist:
+            #print(hist)
             self.json_writeable = True
 
             #check for structs
@@ -80,6 +80,7 @@ class TelemPipeline(StandardPipeline):
 
             else: 
                 hist_name = str(hist.template.comp_name) + '.' + str(hist.template.name)
+
                 hist_data = {
                             'name': hist_name, 
                             'data': {
@@ -88,7 +89,7 @@ class TelemPipeline(StandardPipeline):
                                     'time':hist.time.to_readable()
                                     }
                             }
-                    
+                
                 self.telem_data.append(hist_data)
 
                 if self.json_writeable:
@@ -106,54 +107,6 @@ class TelemPipeline(StandardPipeline):
     def post_telem(self, uri="http://127.0.0.1:4052/fprime_telem"):
         requests.post(uri, json={'name': 'heli', 'telem': self.telem_data}) 
 
-class OpenMCTTelemetryPollerParser(ParserBase):
-    """  GDS style argument parser used to add an argument specifically for this script
-
-    GDS parsers define two methods. `get_arguments` that returns a dictionary of flag tuples to a dictionary of key word
-    arguments provided to argparse. The tuple (keys) are the "arg values" supplied to `argparse.Parser.add_argument()`
-    and the value of the is the "kwargs" supplied.
-
-    `handle_arguments` takes in `args` and keyword arguments. This function allows users to validate, update, and derive
-    from the arguments received.
-    """
-
-    def get_arguments(self) -> Dict[Tuple[str, ...], Dict[str, Any]]:
-        """ Get the arguments to add into the parser system
-
-        Specifically add a channel-name argument driven from --channel-name.
-
-        Return:
-            tuple of flags to argparse key word arguments
-        """
-        return {
-            ("--openmct-uri",): {
-                "dest": "openmct_uri",
-                "type": str,
-                "default": "http://127.0.0.1:4052/fprime_telem",
-                "help": "URI of the OpenMCT Server. The URI at which the F-Prime telemetry will be broadcasted.",
-                "required": False
-            },
-            ("--openmct-telem-rate",): {
-                "dest": "openmct_telem_rate",
-                "type": float,
-                "default": 0.5,
-                "help": "Rate(in Hz) at which we want to poll the F-Prime Telemetry Pipeline for new telemetry",
-                "required": False
-            }
-        }
-
-    def handle_arguments(self, args, **kwargs):
-        """ Do no special argument processing
-
-        Handle arguments can be used to process arguments for later user (e.g. derive special arguments, validate
-        arguments passed in, etc). Users should ensure to pass out an argument namespace that is, or is a modified copy
-        of, the supplied args.
-
-        Args:
-            args: namespace containing arguments passed in. Must be returned, or copied then modified, then returned.
-            **kwargs: key-word arguments passed in to allow local adjustment. unused.
-        """
-        return args
 
 #Set up and Process Command Line Arguments
 arguments, _ = ParserBase.parse_args([StandardPipelineParser, OpenMCTTelemetryPollerParser],

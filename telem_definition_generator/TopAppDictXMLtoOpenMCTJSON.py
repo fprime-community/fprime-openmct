@@ -184,7 +184,12 @@ class TopologyAppDictionaryJSONifier():
                         measurement_entry['values'][0]['enumerations'] = enum_vals['val']
                         self.__init_states[measurement_entry['key']] = enum_vals['val'][0]['string']
 
+
+
+
             self.__measurement_list.append(measurement_entry)   
+
+        self.__init_states = {**self.__init_states, **self.__dict_xml._init_serializables}
 
     #Write OpenMCT dictionary to a JSON file
     def writeOpenMCTJSON(self, fname, fpath='../'):
@@ -197,17 +202,6 @@ class TopologyAppDictionaryJSONifier():
         with open(fpath + fname + ".json", "w") as outfile:
             outfile.write(initialstates_json)     
 
-
-#Set up and Process Command Line Arguments
-arguments, _ = ParserBase.parse_args([StandardPipelineParser],
-                                             description="Topology App Dictionary XML to OpenMCT JSON Parser",
-                                             client=True  # This is a client script, thus client=True must be specified
-                                             )
-
-#Convert Topology App Dictionary XML file to an OpenMCT JSON 
-top_dict = TopologyAppDictionaryJSONifier(arguments.dictionary)
-top_dict.writeOpenMCTJSON('FPrimeDeploymentTopologyAppDictionary', '../')
-top_dict.writeInitialStatesJSON('initial_states', '../')
 
 
 
