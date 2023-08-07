@@ -194,12 +194,12 @@ class TopologyAppDictionaryJSONifier():
     #Write OpenMCT dictionary to a JSON file
     def writeOpenMCTJSON(self, fname, fpath='../'):
         openmct_json = json.dumps(self.__openmct_telem_dict, indent=4)
-        with open(fpath + fname + ".json", "w") as outfile:
+        with open(fpath + '/' + fname + ".json", "w") as outfile:
             outfile.write(openmct_json)
 
     def writeInitialStatesJSON(self, fname, fpath='../'):
         initialstates_json = json.dumps(self.__init_states, indent=4)
-        with open(fpath + fname + ".json", "w") as outfile:
+        with open(fpath + '/' + fname + ".json", "w") as outfile:
             outfile.write(initialstates_json)     
 
 if __name__ == '__main__':
