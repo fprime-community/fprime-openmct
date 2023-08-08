@@ -107,31 +107,29 @@ class TelemPipeline(StandardPipeline):
     def post_telem(self, uri="http://127.0.0.1:4052/fprime_telem"):
         requests.post(uri, json={'name': 'heli', 'telem': self.telem_data}) 
 
+def main():
+    #Set up and Process Command Line Arguments
+    arguments, _ = ParserBase.parse_args([StandardPipelineParser, OpenMCTTelemetryPollerParser],
+                                                description="OpenMCT Telemetry Polling Parser",
+                                                client=True  # This is a client script, thus client=True must be specified
+                                                )
 
-#Set up and Process Command Line Arguments
-arguments, _ = ParserBase.parse_args([StandardPipelineParser, OpenMCTTelemetryPollerParser],
-                                             description="OpenMCT Telemetry Polling Parser",
-                                             client=True  # This is a client script, thus client=True must be specified
-                                             )
-
-# instantiate the GDS and connect to the Deployment
-telem_pipeline = TelemPipeline(connection_ip=arguments.tts_addr, 
-                               connection_port=arguments.tts_port,
-                               dict_path=arguments.dictionary,
-                               log_path=arguments.logs)
-
-# Continuously poll for telemetry from the F-Prime GDS Pipeline
-write_json = True
-i = 0
-while True:
-    #Poll the F-Prime GDS Pipeline for telemetry, and update the latest telemetry JSON
-    telem_pipeline.update_telem_hist() 
-    telem_pipeline.set_telem_json()
+    # instantiate the GDS and connect to the Deployment
+    telem_pipeline = TelemPipeline(connection_ip=arguments.tts_addr, 
+                                connection_port=arguments.tts_port,
+                                dict_path=arguments.dictionary,
+                                log_path=arguments.logs)
     
-    #Post Telemetry Information to the server address OpenMCT is listening on
-    telem_pipeline.post_telem(arguments.openmct_uri)
+    # Continuously poll for telemetry from the F-Prime GDS Pipeline
+    while True:
+        #Poll the F-Prime GDS Pipeline for telemetry, and update the latest telemetry JSON
+        telem_pipeline.update_telem_hist() 
+        telem_pipeline.set_telem_json()
+        
+        #Post Telemetry Information to the server address OpenMCT is listening on
+        telem_pipeline.post_telem(arguments.openmct_uri)
 
-    time.sleep(1/arguments.openmct_telem_rate)
-    i = i+1
+        #Sleep at user defined rate 
+        time.sleep(1/arguments.openmct_telem_rate)
 
 
