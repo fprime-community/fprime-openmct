@@ -10,7 +10,7 @@ def register_npm_package(fpath="~"):
 
 def install_npm_package(pkg, openmct_path=''):
     # Check if an installation already exists. If not, install the node packages
-    if not os.path.exists(openmct_path + 'node_modules'):
+    if not os.path.exists(openmct_path + '/node_modules'):
         print("[INFO] Existing OpenMCT Server not found. Installing F-Prime to OpenMCT Bridge, and OpenMCT.")
         pkg.install()
     else:
