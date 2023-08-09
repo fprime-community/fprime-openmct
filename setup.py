@@ -14,6 +14,7 @@ setup(name='fprime_openmct',
       entry_points={
         "console_scripts": [
             "fprime_openmct.fprime_telem_poller = fprime_openmct.fprime_telem_poller:main",
+            "fprime-openmct-setup = fprime_openmct.config_server:main"
         ],
         "gui_scripts": [],
     },
