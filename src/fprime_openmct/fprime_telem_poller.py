@@ -132,4 +132,5 @@ def main():
         #Sleep at user defined rate 
         time.sleep(1/arguments.openmct_telem_rate)
 
-
+if __name__ == '__main__':
+    main()
