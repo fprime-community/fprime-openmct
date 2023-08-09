@@ -2,21 +2,40 @@ from pynpm import NPMPackage
 import time
 import os
 import webbrowser
+import fprime_openmct
 
-"Registers Python object of Node Server given a package.json"
-def register_npm_package(fpath="~"):
-    pkg = NPMPackage(fpath)
-    return pkg
+class ServerConfig:
 
-def install_npm_package(pkg, openmct_path=''):
-    # Check if an installation already exists. If not, install the node packages
-    if not os.path.exists(openmct_path + '/node_modules'):
-        print("[INFO] Existing OpenMCT Server not found. Installing F-Prime to OpenMCT Bridge, and OpenMCT.")
-        pkg.install()
-    else:
-        print("[INFO] Existing OpenMCT Server Found. New F-Prime to OpenMCT Bridge installation not required.")
+    def install_npm_package(self, fpath):
+        ServerConfig.pkg = NPMPackage(fpath)
+        ServerConfig.openmct_path = fpath
+        # Check if an installation already exists. If not, install the node packages
+        if not os.path.exists(self.openmct_path + '/node_modules'):
+            print("[INFO] Existing OpenMCT Server not found. Installing F-Prime to OpenMCT Bridge, and OpenMCT.")
+            ServerConfig.pkg.install()
+        else:
+            print("[INFO] Existing OpenMCT Server Found. New F-Prime to OpenMCT Bridge installation not required.")
 
-def start_npm_package(pkg, delay=2):
-    pkg.run_script('start', wait=False)
-    time.sleep(delay)
-    webbrowser.open_new_tab('http://localhost:8080')
+    def start_npm_package(self, pkg, delay=2):
+        pkg.run_script('start', wait=False)
+        time.sleep(delay)
+        webbrowser.open_new_tab('http://localhost:8080')
+
+    def install_openmct_server(self, fpath):
+        self.install_npm_package(fpath)
+
+    def launch_openmct_server(self, fpath):
+        if not os.path.exists(fpath + '/node_modules'):
+            print("[INFO] Existing OpenMCT Server not found. Please run fprime-openmct-setup to install the F-Prime to OpenMCT Bridge and OpenMCT!")
+            return 
+        ServerConfig.pkg = NPMPackage(fpath)
+        self.start_npm_package(ServerConfig.pkg)
+
+def main():
+    openmct_dir = fprime_openmct.__file__.replace('__init__.py', 'javascript')
+    npm_server = ServerConfig()
+    npm_server.install_openmct_server(openmct_dir)
+
+if __name__ == '__main__':
+    main()
+
