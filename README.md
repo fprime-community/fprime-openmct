@@ -15,6 +15,7 @@ nvm alias default v18.17.0 # Make v18.17.0 default if you have multiple Node Ver
 
 ### Install fprime-openmct as a pip package
 ```
+git clone https://github.com/mohitsingh999/fprime-openmct --recurse-submodules # Currently being reviewed in a pull request. Link will be updated to the f-prime community OpenMCT when made available.
 pip install . # from the root of the repository 
 ```
 
