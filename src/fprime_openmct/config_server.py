@@ -3,6 +3,7 @@ import time
 import os
 import webbrowser
 import fprime_openmct
+import sys 
 
 class ServerConfig:
 
@@ -10,7 +11,7 @@ class ServerConfig:
         openmct_dir = fprime_openmct.__file__.replace('__init__.py', 'javascript')
         ServerConfig.pkg = NPMPackage(openmct_dir)
         # Check if an installation already exists. If not, install the node packages
-        if not os.path.exists(self.openmct_path + '/node_modules'):
+        if not os.path.exists(openmct_dir + '/node_modules'):
             print("[INFO] Existing OpenMCT Server not found. Installing F-Prime to OpenMCT Bridge, and OpenMCT.")
             ServerConfig.pkg.install()
         else:
@@ -23,13 +24,13 @@ class ServerConfig:
 
     def install_openmct_server(self):
         openmct_dir = fprime_openmct.__file__.replace('__init__.py', 'javascript')
-        self.install_npm_package(openmct_dir)
+        self.install_npm_package()
 
     def launch_openmct_server(self):
         openmct_dir = fprime_openmct.__file__.replace('__init__.py', 'javascript')
         if not os.path.exists(openmct_dir + '/node_modules'):
             print("[INFO] Existing OpenMCT Server not found. Please run fprime-openmct-setup to install the F-Prime to OpenMCT Bridge and OpenMCT Servers!")
-            return 
+            sys.exit() 
         ServerConfig.pkg = NPMPackage(openmct_dir)
         self.start_npm_package(ServerConfig.pkg, delay=5)
 
