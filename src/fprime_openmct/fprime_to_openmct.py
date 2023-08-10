@@ -3,6 +3,7 @@ import xml.etree.ElementTree as ET
 from fprime_gds.common.pipeline.dictionaries import Dictionaries
 from fprime_gds.executables.cli import ParserBase, StandardPipelineParser
 import json
+import fprime_openmct
 
 class EnumIngester:
     """
@@ -192,12 +193,12 @@ class TopologyAppDictionaryJSONifier():
         self.__init_states = {**self.__init_states, **self.__dict_xml._init_serializables}
 
     #Write OpenMCT dictionary to a JSON file
-    def writeOpenMCTJSON(self, fname, fpath='javascript/'):
+    def writeOpenMCTJSON(self, fname, fpath=fprime_openmct.__file__.replace('__init__.py', 'javascript')):
         openmct_json = json.dumps(self.__openmct_telem_dict, indent=4)
         with open(fpath + '/' + fname + ".json", "w") as outfile:
             outfile.write(openmct_json)
 
-    def writeInitialStatesJSON(self, fname, fpath='javascript/'):
+    def writeInitialStatesJSON(self, fname, fpath=fprime_openmct.__file__.replace('__init__.py', 'javascript')):
         initialstates_json = json.dumps(self.__init_states, indent=4)
         with open(fpath + '/' + fname + ".json", "w") as outfile:
             outfile.write(initialstates_json)     
